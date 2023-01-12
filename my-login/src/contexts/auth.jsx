@@ -3,7 +3,11 @@ import React, { useState, useEffect, createContext } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import { api, createSession } from '../services/api';
+
 export const AuthContext = createContext();
+
+
 
 
 export const AuthProvicer = ({children}) => {
@@ -24,30 +28,45 @@ export const AuthProvicer = ({children}) => {
 
     },[]);
 
-    const login = (email, password) => {
+    const login = async (email, password) => {
 
-        console.log("login auth", {email,password});
+      
+       //console.log("login auth", {email,password});
+
+        const response = await createSession(email, password);
+
+      
+
+        //const response = await createSession2(email,password);
+        //console.log(response.data)
+
+        console.log("login", response.data);
+
+        const loggedUser = response.data.user;
+
+        const token = response.data.token;
 
         //api criar uma session
 
-        const loggedUser = {
-            id: "123",
-            email,
-        };
-
+       
         localStorage.setItem("user", JSON.stringify(loggedUser));
+        localStorage.setItem("token",token);
 
+           // const loggedUser = {
+        //    id: "123",
+        //    email,
+       // };
+       
 
-        if(password === "123"){
-            
-            setUser({id: "123",email});
+       api.defaults.headers.Authorization = `Bearer ${token}`;
+
+        
+            //setUser({id: "123",email});
+            setUser(loggedUser);
             navigate("/")
             
-            
-
-        }else{
-            alert("email ou senha incorretos")
-        }
+    
+   
 
        
     };
@@ -56,6 +75,11 @@ export const AuthProvicer = ({children}) => {
         console.log("logout");
         //vai remover da memoria volatil 
         localStorage.removeItem("user")
+        localStorage.removeItem("token")
+
+        
+        api.defaults.headers.Authorization = null;
+
         //vai setar valor como nulo
         setUser(null);
         // Vai redircionar para a página de login
