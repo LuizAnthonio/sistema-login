@@ -1,11 +1,33 @@
 #login{
+    
+   width: 400px;
+    height: 45vh;
+    padding: 10px;
+    
+    background-color: #f1f1f1;
+
+    
+}
+
+
+
+.section-login{
+
     display: flex;
+    width: 50%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0 auto;
     min-height: 100vh;
-    padding: 0 2rem;
+    background-image: url('https://images.pexels.com/photos/9484643/pexels-photo-9484643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-position: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+    
 }
+
 
 #login .form{
     background-color: #f1f1f1;
@@ -24,9 +46,72 @@
 
 #login .field input{
     width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #bdb1b1;
+    outline: none;
+    padding: 10px;
 }
 
-#login .actions{
+#login .actions button{
+    width: 100%;
+    height: 40px;
+    font-size: large;
     text-align: center;
     margin-top: 0.5rem;
+    background-color: blueviolet;
+    color: #f1f1f1;
+    font-weight: bold;
+    transition: 1s;
+    letter-spacing: 4px;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+#login .actions button:hover{
+    transition: 1s;
+    letter-spacing: 1px;
+    
+    border-radius: 10px;
+    background-color: rgb(88, 0, 170);
+}
+
+
+.section{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ 
+
+}
+
+.infos{
+    width: 50%;
+    height: 100%;
+    background-color: blueviolet;
+}
+
+.text-title{
+    font-size: 50px;
+    color: blueviolet;
+}
+
+.text-title h1{
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 2%;
+}
+
+
+.container-single{
+    width: 300px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    position: relative;
+    top: 30%;
+    background-color: none;
 }

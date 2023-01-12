@@ -21,7 +21,17 @@ export const AuthProvicer = ({children}) => {
         const recoveredUser = localStorage.getItem('user');
 
         if(recoveredUser){
+
+               
+
             setUser(JSON.parse(recoveredUser))
+            /*setUser(
+                 {
+                id: "123",
+                email:"teste@gmail.com",
+                password:"123"
+                }
+            )*/
         }
 
         setLoading(false);
@@ -40,7 +50,7 @@ export const AuthProvicer = ({children}) => {
         //const response = await createSession2(email,password);
         //console.log(response.data)
 
-        console.log("login", response.data);
+        //console.log("login", response.data);
 
         const loggedUser = response.data.user;
 
